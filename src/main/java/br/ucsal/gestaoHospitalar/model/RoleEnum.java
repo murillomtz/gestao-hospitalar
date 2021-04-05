@@ -1,6 +1,9 @@
 package br.ucsal.gestaoHospitalar.model;
 
-public enum FuncaoEnum {
+import javax.persistence.Entity;
+
+@Entity
+public enum RoleEnum {
 	
 	MEDICO, ENFERMEIRO, OUTRO
 
