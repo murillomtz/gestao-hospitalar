@@ -8,11 +8,11 @@
 		<version>2.4.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>br.ucsal</groupId>
-	<artifactId>gestaoHospitalar</artifactId>
+	<groupId>com.example</groupId>
+	<artifactId>gestao-hospitalar</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>gestaoHospitalar</name>
-	<description>Modulo de Gestão Hospitalar</description>
+	<name>gestao-hospitalar</name>
+	<description>Projeto de gestão hospitalar</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -48,7 +48,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
