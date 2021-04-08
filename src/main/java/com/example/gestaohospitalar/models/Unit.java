@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_unit")
@@ -22,6 +23,9 @@ public class Unit implements Serializable {
     private String cep;
     private String spot;
     private String telephone;
+
+    @OneToMany(mappedBy="unit", cascade=CascadeType.ALL)
+    private List<Appointmet> appointmet;
 
     public Unit(String name, String cep, String spot, String telephone) {
         super();

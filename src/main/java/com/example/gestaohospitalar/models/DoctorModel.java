@@ -1,6 +1,7 @@
 package com.example.gestaohospitalar.models;
 
 import com.example.gestaohospitalar.enums.RoleEnum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -8,6 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -23,6 +25,11 @@ public class DoctorModel extends Employee implements Serializable {
     private Long id;
     private String especialidade;
     private  Integer RMS;
+
+    // @JsonBackReference // Nao permite que cliente serem serializados os pedidos
+    @JsonIgnore
+    @OneToMany(mappedBy = "doctor")
+    private List<Appointmet> appointments;
 
 
     public DoctorModel(String name, String cpf, LocalDate birthDate, Long id, RoleEnum role, Unit unit, Double valueHour, Long id1, String especialidade, Integer RMS) {

@@ -23,9 +23,11 @@ public class Medication implements Serializable {
 	private String dosage;
 
 	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "POSITIVEEFECTS") // CRIA UMA TABELA COM O ID E TELEFONE
 	private Set<String> positiveEffects;
 
 	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "NEGATIVEEFECTS") // CRIA UMA TABELA COM O ID E TELEFONE
 	private Set<String> negativeEffects;
 
 	public Medication(String nome, String dosagem, Set<String> efeitosPositivos, Set<String> efeitosNegativo) {
