@@ -1,22 +1,43 @@
 package com.example.gestaohospitalar.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
-public class Medication {
+@Entity
+@Table(name = "tb_medivation")
+public class Medication implements Serializable {
 
+	@JsonInclude(JsonInclude.Include.NON_NULL)
+	@Id
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
+	@Column(name = "id")
 	private Long id;
 	
 	private String name;
 	private String dosage;
-	private List<String> positiveEffects;
-	private List<String> negativeEffects;
 
-	public Medication(String nome, String dosagem, List<String> efeitosPositivos, List<String> efeitosNegativo) {
+	@ElementCollection(fetch = FetchType.EAGER)
+	private Set<String> positiveEffects;
+
+	@ElementCollection(fetch = FetchType.EAGER)
+	private Set<String> negativeEffects;
+
+	public Medication(String nome, String dosagem, Set<String> efeitosPositivos, Set<String> efeitosNegativo) {
 		super();
 		this.name = nome;
 		this.dosage = dosagem;
 		this.positiveEffects = efeitosPositivos;
 		this.negativeEffects = efeitosNegativo;
+	}
+
+	public Medication() {
+
 	}
 
 	public String getNome() {
@@ -35,19 +56,19 @@ public class Medication {
 		this.dosage = dosagem;
 	}
 
-	public List<String> getEfeitosPositivos() {
+	public Set<String> getEfeitosPositivos() {
 		return positiveEffects;
 	}
 
-	public void setEfeitosPositivos(List<String> efeitosPositivos) {
+	public void setEfeitosPositivos(Set<String> efeitosPositivos) {
 		this.positiveEffects = efeitosPositivos;
 	}
 
-	public List<String> getEfeitosNegativo() {
+	public Set<String> getEfeitosNegativo() {
 		return negativeEffects;
 	}
 
-	public void setEfeitosNegativo(List<String> efeitosNegativo) {
+	public void setEfeitosNegativo(Set<String> efeitosNegativo) {
 		this.negativeEffects = efeitosNegativo;
 	}
 

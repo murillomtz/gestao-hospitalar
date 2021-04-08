@@ -1,21 +1,46 @@
 package com.example.gestaohospitalar.models;
 
-import java.sql.Date;
+import javax.persistence.*;
 
-public class PersonModel {
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import org.hibernate.annotations.GenericGenerator;
 
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Date;
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED) // Mapear uma herança, JOINED cria uma tabela para cada
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type") // Por ser um clase
+public class PersonModel implements Serializable {
+
+	@JsonInclude(JsonInclude.Include.NON_NULL)
+	@Id
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
+	@Column(name = "id")
 	private Long id;
 
 	private String name;
 	private String cpf;
-	private Date birthDate;
 
-	public PersonModel(String name, String cpf, Date birthDate) {
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	private LocalDate birthDate;
+
+
+	public PersonModel(String name, String cpf, LocalDate birthDate) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.cpf = cpf;
 		this.birthDate = birthDate;
+	}
+
+	public PersonModel() {
+
 	}
 
 	public String getName() {
@@ -34,11 +59,11 @@ public class PersonModel {
 		this.cpf = cpf;
 	}
 
-	public Date getBirthDate() {
+	public LocalDate getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
 	}
 

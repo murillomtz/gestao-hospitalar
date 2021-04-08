@@ -1,23 +1,54 @@
 package com.example.gestaohospitalar.models;
 
+import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
 
 import com.example.gestaohospitalar.enums.RoleEnum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+
+@Entity
+@Table
+public class Employee extends PersonModel implements Serializable {
 
 
-public class Employee extends PersonModel {
-	
+	@JsonInclude(JsonInclude.Include.NON_NULL)
+	@Id
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
+	@Column(name = "id")
 	private Long id;
 	
 	private RoleEnum role;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "unit_id", referencedColumnName = "id")
+	@JsonIgnore
 	private Unit unit;
+
 	private Double valueHour;
 
-	public Employee(String nome, String cpf, Date nascimento, RoleEnum role, Unit unit, Double valueHour) {
-		super(nome, cpf, nascimento);
+	public Employee(String name, String cpf, LocalDate birthDate, Long id, RoleEnum role, Unit unit, Double valueHour) {
+		super(name, cpf, birthDate);
+		this.id = id;
 		this.role = role;
 		this.unit = unit;
 		this.valueHour = valueHour;
+	}
+
+	public Employee(Long id, RoleEnum role, Unit unit, Double valueHour) {
+		this.id = id;
+		this.role = role;
+		this.unit = unit;
+		this.valueHour = valueHour;
+	}
+
+	public Employee() {
+
 	}
 
 	public RoleEnum getRole() {

@@ -1,14 +1,24 @@
 package com.example.gestaohospitalar.models;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
 import com.example.gestaohospitalar.enums.TypeAppointmentEnum;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+
+@Entity
+public class Appointmet implements Serializable {
 
 
-
-public class Appointmet {
-
+	@JsonInclude(JsonInclude.Include.NON_NULL)
+	@Id
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
+	@Column(name = "id")
 	private Long id;
 
 	private TypeAppointmentEnum typeAppointment;
@@ -16,8 +26,14 @@ public class Appointmet {
 	private String occasion;
 	private Double cost;
 	private String diagnosis;
+
 	private Employee doctor;
+
+	@ManyToOne
+	@JoinColumn(name = "patient_id",referencedColumnName = "id")
 	private Patient patient;
+
+
 	private List<String> inputs;
 	private List<Medication> medications;
 	private Date date;

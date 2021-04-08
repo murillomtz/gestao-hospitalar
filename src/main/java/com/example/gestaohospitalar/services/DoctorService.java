@@ -1,11 +1,14 @@
 package com.example.gestaohospitalar.services;
 
+import com.example.gestaohospitalar.models.DoctorModel;
 import org.springframework.stereotype.Component;
 
-@Component
-public class DoctorService {
+import java.util.List;
 
-	public void createDoctor() {
-		
-	}
+
+public interface DoctorService {
+
+	List<DoctorModel> findAll();
+	DoctorModel findById(long id);
+	DoctorModel save(DoctorModel doctor);
 }

@@ -1,19 +1,46 @@
 package com.example.gestaohospitalar.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
-public class Patient extends PersonModel {
+@Entity
+@Table(name = "tb_patient")
+public class Patient extends PersonModel implements Serializable {
 
-	
-	private static Long id;
+	@JsonInclude(JsonInclude.Include.NON_NULL)
+	@Id
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
+	@Column(name = "id")
+	private  Long id;
+
+	// @JsonBackReference // Nao permite que cliente serem serializados os pedidos
+	@JsonIgnore
+	@OneToMany(mappedBy = "user")
 	private List<Appointmet> appointments;
+
 	private String cep;
+
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name="medication_id")
 	private List<Medication> medications;
 
-	public Patient(String nome, String cpf, String cep, Date nascimento) {
-		super(nome, cpf, nascimento);
+	public Patient(String name, String cpf, LocalDate birthDate, List<Appointmet> appointments, String cep, List<Medication> medications) {
+		super(name, cpf, birthDate);
+		this.appointments = appointments;
 		this.cep = cep;
+		this.medications = medications;
+	}
+
+	public Patient() {
+
 	}
 
 	public List<Appointmet> getConsultas() {

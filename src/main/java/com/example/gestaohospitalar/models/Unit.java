@@ -1,57 +1,75 @@
 package com.example.gestaohospitalar.models;
 
-public class Unit {
+import com.fasterxml.jackson.annotation.JsonInclude;
+import org.hibernate.annotations.GenericGenerator;
 
-	private Long id;
+import javax.persistence.*;
+import java.io.Serializable;
 
-	private String name;
-	private String cep;
-	private String spot;
-	private String telephone;
+@Entity
+@Table(name = "tb_unit")
+public class Unit implements Serializable {
 
-	public Unit(String name, String cep, String spot, String telephone) {
-		super();
-		this.name = name;
-		this.cep = cep;
-		this.spot = spot;
-		this.telephone = telephone;
-	}
 
-	public String getName() {
-		return name;
-	}
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "id")
+    private Long id;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    private String name;
+    private String cep;
+    private String spot;
+    private String telephone;
 
-	public String getCep() {
-		return cep;
-	}
+    public Unit(String name, String cep, String spot, String telephone) {
+        super();
+        this.name = name;
+        this.cep = cep;
+        this.spot = spot;
+        this.telephone = telephone;
+    }
 
-	public void setCep(String cep) {
-		this.cep = cep;
-	}
+    public Unit() {
 
-	public String getSpot() {
-		return spot;
-	}
+    }
 
-	public void setSpot(String spot) {
-		this.spot = spot;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getTelephone() {
-		return telephone;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
-	}
+    public String getCep() {
+        return cep;
+    }
 
-	@Override
-	public String toString() {
-		return "Unidade [nome=" + name + ", cep=" + cep + ", local=" + spot + ", telefone=" + telephone + "]";
-	}
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getSpot() {
+        return spot;
+    }
+
+    public void setSpot(String spot) {
+        this.spot = spot;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    @Override
+    public String toString() {
+        return "Unidade [nome=" + name + ", cep=" + cep + ", local=" + spot + ", telefone=" + telephone + "]";
+    }
 
 }
