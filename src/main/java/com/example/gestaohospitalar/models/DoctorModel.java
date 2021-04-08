@@ -1,23 +1,36 @@
 package com.example.gestaohospitalar.models;
 
+<<<<<<< HEAD
+=======
 import com.example.gestaohospitalar.enums.RoleEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+>>>>>>> branch 'master' of https://github.com/murillomtz/gestao-hospitalar.git
 import java.io.Serializable;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
+import com.example.gestaohospitalar.enums.RoleEnum;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 @Entity
 @Table(name = "tb_doctor")
 public class DoctorModel extends Employee implements Serializable {
-
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+	private static final long serialVersionUID = -7999235303120098773L;
+	
+	@JsonInclude(JsonInclude.Include.NON_NULL)
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")

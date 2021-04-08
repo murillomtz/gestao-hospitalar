@@ -1,10 +1,10 @@
 package com.example.gestaohospitalar.util;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.example.gestaohospitalar.repository.DoctorRepository;
 import com.example.gestaohospitalar.repository.PatientRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 
 /**
@@ -13,10 +13,12 @@ import org.springframework.stereotype.Component;
 //@Component
 public class DummyData {
 
-    @Autowired
-    private PatientRepository patientRepository;
-    @Autowired
-    private DoctorRepository doctorRepository;
+    @SuppressWarnings("unused")
+	@Autowired
+    private PatientRepository patientRepository;//TODO-FIX-ME reclama que não está sendo usado
+    @SuppressWarnings("unused")
+	@Autowired
+    private DoctorRepository doctorRepository;//TODO-FIX-ME reclama que não está sendo usado
 
 
 

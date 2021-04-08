@@ -1,21 +1,26 @@
 package com.example.gestaohospitalar.models;
 
-import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import org.hibernate.annotations.GenericGenerator;
-
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED) // Mapear uma herança, JOINED cria uma tabela para cada
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type") // Por ser um clase
 public class PersonModel implements Serializable {
+	private static final long serialVersionUID = -5907063255873242757L;
 
 	@JsonInclude(JsonInclude.Include.NON_NULL)
 	@Id
@@ -31,7 +36,7 @@ public class PersonModel implements Serializable {
 	private LocalDate birthDate;
 
 
-	public PersonModel(String name, String cpf, LocalDate birthDate) {
+	public PersonModel(String name, String cpf, LocalDate birthDate, Long id) {
 		super();
 		this.id = id;
 		this.name = name;
