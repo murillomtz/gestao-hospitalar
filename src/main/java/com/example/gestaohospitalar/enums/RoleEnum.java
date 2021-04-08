@@ -4,6 +4,7 @@ public enum RoleEnum {
 	
 	MEDICO("medico"), ENFERMEIRO("enfermeiro"), OUTRO("outro");
 
+	@SuppressWarnings("unused")
 	private final String valor;
 	RoleEnum(String valor) {
 		this.valor = valor;

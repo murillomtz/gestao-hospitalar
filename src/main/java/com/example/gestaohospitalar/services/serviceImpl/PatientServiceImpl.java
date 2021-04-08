@@ -1,11 +1,9 @@
 package com.example.gestaohospitalar.services.serviceImpl;
 
-import com.example.gestaohospitalar.models.DoctorModel;
-import com.example.gestaohospitalar.models.Patient;
-import com.example.gestaohospitalar.services.DoctorService;
-import com.example.gestaohospitalar.services.PatientService;
-
 import java.util.List;
+
+import com.example.gestaohospitalar.models.Patient;
+import com.example.gestaohospitalar.services.PatientService;
 
 public class PatientServiceImpl implements PatientService {
     @Override
