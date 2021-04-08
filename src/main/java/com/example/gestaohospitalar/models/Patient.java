@@ -28,7 +28,7 @@ public class Patient extends PersonModel implements Serializable {
 
 	private String cep;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany()
 	@JoinColumn(name="medication_id")
 	private List<Medication> medications;
 
