@@ -33,7 +33,7 @@ public class Patient extends PersonModel implements Serializable {
 
 	// @JsonBackReference // Nao permite que cliente serem serializados os pedidos
 	@JsonIgnore
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "patient")
 	private List<Appointmet> appointments;
 
 	private String cep;
