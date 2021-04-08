@@ -13,6 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -20,15 +21,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
 @Table(name = "tb_patient")
+@JsonTypeName("personmodel")
 public class Patient extends PersonModel implements Serializable {
 	private static final long serialVersionUID = 9147080824535747800L;
 
-	@JsonInclude(JsonInclude.Include.NON_NULL)
-	@Id
-	@GeneratedValue(generator = "increment")
-	@GenericGenerator(name = "increment", strategy = "increment")
-	@Column(name = "id")
-	private Long id;
 
 	// @JsonBackReference // Nao permite que cliente serem serializados os pedidos
 	@JsonIgnore
@@ -46,7 +42,7 @@ public class Patient extends PersonModel implements Serializable {
 		this.appointments = appointments;
 		this.cep = cep;
 		this.medications = medications;
-		this.id = id;
+
 	}
 
 	public Patient() {
@@ -77,15 +73,6 @@ public class Patient extends PersonModel implements Serializable {
 		this.medications = medicamentos;
 	}
 	
-	
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	@Override
 	public String toString() {

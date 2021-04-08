@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.example.gestaohospitalar.enums.RoleEnum;
@@ -19,16 +20,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
-@Table
+@Table(name = "tb_employee")
+@JsonTypeName("employee")
 public class Employee extends PersonModel implements Serializable {
-	private static final long serialVersionUID = 6321738996577997893L;
 
-	@JsonInclude(JsonInclude.Include.NON_NULL)
-	@Id
-	@GeneratedValue(generator = "increment")
-	@GenericGenerator(name = "increment", strategy = "increment")
-	@Column(name = "id")
-	private Long id;
 	
 	private RoleEnum role;
 
@@ -39,23 +34,21 @@ public class Employee extends PersonModel implements Serializable {
 
 	private Double valueHour;
 
-	public Employee(String name, String cpf, LocalDate birthDate, Long id, RoleEnum role, Unit unit, Double valueHour) {
-		super(name, cpf, birthDate, id);
-		this.id = id;
-		this.role = role;
-		this.unit = unit;
-		this.valueHour = valueHour;
-	}
-
-	public Employee(Long id, RoleEnum role, Unit unit, Double valueHour) {
-		this.id = id;
-		this.role = role;
-		this.unit = unit;
-		this.valueHour = valueHour;
-	}
-
 	public Employee() {
 
+	}
+
+	public Employee(String name, String cpf, LocalDate birthDate, Long id, RoleEnum role, Unit unit, Double valueHour) {
+		super(name, cpf, birthDate, id);
+		this.role = role;
+		this.unit = unit;
+		this.valueHour = valueHour;
+	}
+
+	public Employee(RoleEnum role, Unit unit, Double valueHour) {
+		this.role = role;
+		this.unit = unit;
+		this.valueHour = valueHour;
 	}
 
 	public RoleEnum getRole() {

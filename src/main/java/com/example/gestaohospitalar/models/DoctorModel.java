@@ -3,67 +3,44 @@ package com.example.gestaohospitalar.models;
 
 import com.example.gestaohospitalar.enums.RoleEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import org.hibernate.annotations.GenericGenerator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
-import javax.persistence.*;
-
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 
 @Entity
 @Table(name = "tb_doctor")
+@JsonTypeName("doctorModel")
 public class DoctorModel extends Employee implements Serializable {
-	private static final long serialVersionUID = -7999235303120098773L;
-	
-	@JsonInclude(JsonInclude.Include.NON_NULL)
-    @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
-    @Column(name = "id")
-    private Long id;
+    private static final long serialVersionUID = -7999235303120098773L;
+
+
     private String especialidade;
-    private  Integer RMS;
+    private Integer RMS;
 
     // @JsonBackReference // Nao permite que cliente serem serializados os pedidos
     @JsonIgnore
     @OneToMany(mappedBy = "doctor")
     private List<Appointmet> appointments;
 
-
-    public DoctorModel(String name, String cpf, LocalDate birthDate, Long id, RoleEnum role, Unit unit, Double valueHour, Long id1, String especialidade, Integer RMS) {
-        super(name, cpf, birthDate, id, role, unit, valueHour);
-        this.id = id1;
-        this.especialidade = especialidade;
-        this.RMS = RMS;
-    }
-
-    public DoctorModel(Long id, RoleEnum role, Unit unit, Double valueHour, Long id1, String especialidade, Integer RMS) {
-        super(id, role, unit, valueHour);
-        this.id = id1;
-        this.especialidade = especialidade;
-        this.RMS = RMS;
-    }
-
     public DoctorModel() {
 
     }
 
-    public Long getId() {
-        return id;
-    }
+    public DoctorModel(String name, String cpf, LocalDate birthDate,
+                       Long id, RoleEnum role, Unit unit, Double valueHour,
+                       String especialidade, Integer RMS, List<Appointmet> appointments) {
 
-    public void setId(Long id) {
-        this.id = id;
+        super(name, cpf, birthDate, id, role, unit, valueHour);
+        this.especialidade = especialidade;
+        this.RMS = RMS;
+        this.appointments = appointments;
     }
 
     public String getEspecialidade() {
@@ -82,18 +59,17 @@ public class DoctorModel extends Employee implements Serializable {
         this.RMS = RMS;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         DoctorModel that = (DoctorModel) o;
-        return Objects.equals(id, that.id) && Objects.equals(especialidade, that.especialidade) && Objects.equals(RMS, that.RMS);
+        return Objects.equals(especialidade, that.especialidade) && Objects.equals(RMS, that.RMS) && Objects.equals(appointments, that.appointments);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), id, especialidade, RMS);
+        return Objects.hash(super.hashCode(), especialidade, RMS, appointments);
     }
 }

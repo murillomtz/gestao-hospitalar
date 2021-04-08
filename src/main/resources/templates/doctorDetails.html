@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--Referenciando o Thymeleaf-->
+<html xmlns:th="http://thymeleaf.org">
+
+<div th:replace="include/head :: head"></div>
+<div th:replace="include/reader :: header"></div>
+
+
+<body>
+<main>
+    <div class="container" style="width: 70%; padding-top: 40px;">
+        <article>
+            <h1 class="card-title"
+                style="font-weight: bold; margin-bottom: 20px;">
+                <span th:text="${doctor.name}"></span>
+            </h1>
+            <p>
+                <class class="card-subtitle mb-2 text-muted">
+                    <i class="material-icons">schedule</i> <span th:text="${doctor.especialidade}"></span>
+            </p>
+
+
+            </class>
+            </p>
+
+
+        </article>
+
+        <a
+                th:href="${(#mvc.url('TC#getEditarTarefa').arg(0, tarefa.id)).build()}"
+                class="btn btn-primary" role="button" style="margin-top: 10px;">Editar</a>
+    </div>
+
+</main>
+
+</body>
+
+
+</html>
