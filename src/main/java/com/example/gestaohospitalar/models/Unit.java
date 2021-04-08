@@ -10,13 +10,13 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
-<<<<<<< HEAD
+
 import com.fasterxml.jackson.annotation.JsonInclude;
-=======
+
 import javax.persistence.*;
-import java.io.Serializable;
+
 import java.util.List;
->>>>>>> branch 'master' of https://github.com/murillomtz/gestao-hospitalar.git
+
 
 @Entity
 @Table(name = "tb_unit")

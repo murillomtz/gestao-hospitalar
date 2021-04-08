@@ -1,8 +1,8 @@
 package com.example.gestaohospitalar.models;
 
-<<<<<<< HEAD
+
 import java.io.Serializable;
-import java.sql.Date;
+
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,24 +12,19 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-=======
+
 import com.example.gestaohospitalar.enums.TypeAppointmentEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
->>>>>>> branch 'master' of https://github.com/murillomtz/gestao-hospitalar.git
+
 import org.hibernate.annotations.GenericGenerator;
 
-<<<<<<< HEAD
-import com.example.gestaohospitalar.enums.TypeAppointmentEnum;
-import com.fasterxml.jackson.annotation.JsonInclude;
-=======
 import javax.persistence.*;
-import java.io.Serializable;
-import java.sql.Date;
+
 import java.time.LocalDate;
-import java.util.List;
+
 import java.util.Set;
->>>>>>> branch 'master' of https://github.com/murillomtz/gestao-hospitalar.git
+
 
 @Entity
 @Table(name = "tb_appointmet")
