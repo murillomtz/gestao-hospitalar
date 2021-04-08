@@ -1,20 +1,27 @@
 package com.example.gestaohospitalar.models;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import com.example.gestaohospitalar.enums.RoleEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import org.hibernate.annotations.GenericGenerator;
-
-import javax.persistence.*;
 
 @Entity
 @Table
 public class Employee extends PersonModel implements Serializable {
-
+	private static final long serialVersionUID = 6321738996577997893L;
 
 	@JsonInclude(JsonInclude.Include.NON_NULL)
 	@Id
@@ -33,7 +40,7 @@ public class Employee extends PersonModel implements Serializable {
 	private Double valueHour;
 
 	public Employee(String name, String cpf, LocalDate birthDate, Long id, RoleEnum role, Unit unit, Double valueHour) {
-		super(name, cpf, birthDate);
+		super(name, cpf, birthDate, id);
 		this.id = id;
 		this.role = role;
 		this.unit = unit;

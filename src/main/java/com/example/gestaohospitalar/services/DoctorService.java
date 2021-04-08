@@ -1,9 +1,8 @@
 package com.example.gestaohospitalar.services;
 
-import com.example.gestaohospitalar.models.DoctorModel;
-import org.springframework.stereotype.Component;
-
 import java.util.List;
+
+import com.example.gestaohospitalar.models.DoctorModel;
 
 
 public interface DoctorService {

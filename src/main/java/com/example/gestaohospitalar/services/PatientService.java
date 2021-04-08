@@ -1,9 +1,8 @@
 package com.example.gestaohospitalar.services;
 
-import com.example.gestaohospitalar.models.DoctorModel;
-import com.example.gestaohospitalar.models.Patient;
-
 import java.util.List;
+
+import com.example.gestaohospitalar.models.Patient;
 
 
 public interface PatientService {

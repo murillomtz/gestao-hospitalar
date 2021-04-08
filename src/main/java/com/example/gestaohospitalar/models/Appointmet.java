@@ -4,15 +4,21 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
-import com.example.gestaohospitalar.enums.TypeAppointmentEnum;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
+import com.example.gestaohospitalar.enums.TypeAppointmentEnum;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
 public class Appointmet implements Serializable {
-
+	private static final long serialVersionUID = -4212996042496642502L;
 
 	@JsonInclude(JsonInclude.Include.NON_NULL)
 	@Id

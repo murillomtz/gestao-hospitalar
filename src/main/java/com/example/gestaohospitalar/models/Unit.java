@@ -1,17 +1,23 @@
 package com.example.gestaohospitalar.models;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
 @Table(name = "tb_unit")
 public class Unit implements Serializable {
+	private static final long serialVersionUID = -7937053077559666162L;
 
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+	@JsonInclude(JsonInclude.Include.NON_NULL)
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
