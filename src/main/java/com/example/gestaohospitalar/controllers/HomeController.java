@@ -59,7 +59,7 @@ public class HomeController {
 		return String.format("Hello %s!", name);
 	}
 
-	@RequestMapping(value = "/newconsulta", method = RequestMethod.GET)
+	@RequestMapping(value = "/appointment/new", method = RequestMethod.GET)
 	public ModelAndView getConsultaForm() {
 
 		ModelAndView mv = new ModelAndView("consultaForm");

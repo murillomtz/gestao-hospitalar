@@ -29,7 +29,10 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     public DoctorModel save(DoctorModel doctor) {
-        return doctorRepository.save(doctor);
+
+        DoctorModel doctorToSave = new DoctorModel(doctor.getName(), doctor.getCpf(), doctor.getBirthDate(), doctor.getEspecialidade(), doctor.getRMS(), null);
+
+        return doctorRepository.save(doctorToSave);
 
     }
 

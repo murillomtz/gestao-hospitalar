@@ -26,12 +26,10 @@ public class DoctorModel extends PersonModel implements Serializable {
     private List<Appointmet> appointments;
 
     public DoctorModel() {
-
     }
 
-    public DoctorModel(String name, String cpf, LocalDate birthDate, Unit unit,
-            Double valueHour, String especialidade, Integer RMS, List<Appointmet> appointments) {
-
+    public DoctorModel(String name, String cpf, LocalDate birthDate, String especialidade, Integer RMS,
+            List<Appointmet> appointments) {
         super(name, cpf, birthDate);
         this.especialidade = especialidade;
         this.RMS = RMS;
@@ -70,5 +68,11 @@ public class DoctorModel extends PersonModel implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), especialidade, RMS, appointments);
+    }
+
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return super.toString();
     }
 }

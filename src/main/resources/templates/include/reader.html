@@ -4,13 +4,13 @@
 
         <!--Se a url for diferente de /newpost ele mostra o button Novo Post-->
         <div th:if="${#httpServletRequest.requestURI != '/newconsulta'}">
-            <a href="/consulta/new" class="btn btn-light" role="button">Nova Consulta</a>
+            <a href="/appointment/new" class="btn btn-light" role="button">Nova Consulta</a>
         </div>
         <div th:if="${#httpServletRequest.requestURI != '/newpaciente'}">
             <a href="/patient/new" class="btn btn-light" role="button">Novo Paciente</a>
         </div>
         <div th:if="${#httpServletRequest.requestURI != '/newfuncionario'}">
-            <a href="/doctor/new" class="btn btn-light" role="button">Novo Funcionario</a>
+            <a href="/doctor/new" class="btn btn-light" role="button">Novo Médico</a>
         </div>
 
     </nav>
