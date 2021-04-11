@@ -31,9 +31,13 @@ public class Patient extends PersonModel implements Serializable {
 	@JoinColumn(name = "medication_id")
 	private List<Medication> medications;
 
+	public Patient(){
+		
+	};
+
 	public Patient(String name, String cpf, LocalDate birthDate, List<Appointmet> appointments, String cep,
-			List<Medication> medications, Long id) {
-		super(name, cpf, birthDate, id);
+			List<Medication> medications) {
+		super(name, cpf, birthDate);
 		this.appointments = appointments;
 		this.cep = cep;
 		this.medications = medications;

@@ -129,10 +129,6 @@ public class Appointmet implements Serializable {
         this.diagnosis = diagnosis;
     }
 
-    public Employee getDoctor() {
-        return doctor;
-    }
-
     public void setDoctor(DoctorModel doctor) {
         this.doctor = doctor;
     }

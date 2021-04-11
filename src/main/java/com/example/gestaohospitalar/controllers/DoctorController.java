@@ -22,7 +22,7 @@ public class DoctorController {
     @Autowired
     private DoctorService doctorService;
 
-    @RequestMapping(value = "/doctor")
+    @RequestMapping(value = "/doctor", method = RequestMethod.GET)
     public ModelAndView getDoctor() {
 
         ModelAndView mv = new ModelAndView("doctorList");
@@ -32,7 +32,7 @@ public class DoctorController {
     }
 
     @RequestMapping(value = "/doctor/{id}", method = RequestMethod.GET)
-    public ModelAndView getTarefaDetails(@PathVariable("id") long id) {
+    public ModelAndView getDoctorDetails(@PathVariable("id") long id) {
 
         ModelAndView mv = new ModelAndView("doctorDetails");
         DoctorModel doctor = doctorService.findById(id);
@@ -40,7 +40,7 @@ public class DoctorController {
         return mv;
     }
 
-    @RequestMapping(value = "/newfuncionario")
+    @RequestMapping(value = "/doctor/new")
     public ModelAndView createDoctor() {
 
         ModelAndView mv = new ModelAndView("funcionarioForm");
@@ -49,11 +49,11 @@ public class DoctorController {
     }
 
     @Transactional // Por conta da transição de usuario e tarefa
-    @RequestMapping(value = "/newdoctor", method = RequestMethod.POST)
-    public String saveTarefa(@Valid DoctorModel doctor, BindingResult result, RedirectAttributes attributes) {
+    @RequestMapping(value = "/doctor", method = RequestMethod.POST)
+    public String saveDoctor(@Valid DoctorModel doctor, BindingResult result, RedirectAttributes attributes) {
         if (result.hasErrors()) {
             attributes.addFlashAttribute("mensagem", "Verifique se os campos obrigatorios foram preechidos!");
-            return "redirect:/newdoctor";
+            return "redirect:/doctor";
         }
 
         doctorService.save(doctor);

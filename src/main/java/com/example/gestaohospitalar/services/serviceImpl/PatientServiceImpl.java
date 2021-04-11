@@ -32,4 +32,10 @@ public class PatientServiceImpl implements PatientService {
         return patientRepository.save(patient);
 
     }
+
+    @Override
+    public void deleteById(Long id) {
+        patientRepository.deleteById(id);
+        return;
+    }
 }

@@ -35,9 +35,8 @@ public class PersonModel implements Serializable {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate birthDate;
 
-	public PersonModel(String name, String cpf, LocalDate birthDate, Long id) {
+	public PersonModel(String name, String cpf, LocalDate birthDate) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.cpf = cpf;
 		this.birthDate = birthDate;

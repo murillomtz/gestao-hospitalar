@@ -46,13 +46,13 @@ public class HomeController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/newpaciente")
-	public ModelAndView getPacienteForm() {
+	// @RequestMapping(value = "/newpaciente")
+	// public ModelAndView getPacienteForm() {
 
-		ModelAndView mv = new ModelAndView("usuarioForm");
+	// 	ModelAndView mv = new ModelAndView("usuarioForm");
 
-		return mv;
-	}
+	// 	return mv;
+	// }
 
 	@GetMapping("/hello")
 	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {

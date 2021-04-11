@@ -1,6 +1,5 @@
 package com.example.gestaohospitalar.models;
 
-import com.example.gestaohospitalar.enums.RoleEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
@@ -15,7 +14,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "tb_doctor")
 @JsonTypeName("doctorModel")
-public class DoctorModel extends Employee implements Serializable {
+public class DoctorModel extends PersonModel implements Serializable {
     private static final long serialVersionUID = -7999235303120098773L;
 
     private String especialidade;
@@ -30,10 +29,10 @@ public class DoctorModel extends Employee implements Serializable {
 
     }
 
-    public DoctorModel(String name, String cpf, LocalDate birthDate, Long id, RoleEnum role, Unit unit,
+    public DoctorModel(String name, String cpf, LocalDate birthDate, Unit unit,
             Double valueHour, String especialidade, Integer RMS, List<Appointmet> appointments) {
 
-        super(name, cpf, birthDate, id, role, unit, valueHour);
+        super(name, cpf, birthDate);
         this.especialidade = especialidade;
         this.RMS = RMS;
         this.appointments = appointments;

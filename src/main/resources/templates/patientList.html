@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!--Referenciando o Thymeleaf-->
+<html xmlns:th="http://thymeleaf.org">
+
+<div th:replace="include/head :: head"></div>
+<div th:replace="include/reader :: header"></div>
+
+
+<body>
+<section>
+    <div class="container" style="width: 70%; padding-bottom: 30px; padding-top: 30px;">
+        <div class="card text-right" style="margin-bottom: 10px;margin-top: 10px;" th:each="patient :${patients}">
+            <div class="card-body " >
+                <h5 class="card-title"><span th:text="${patient.name}"></span></h5>
+                <p class="card-text"><span th:utext="${patient.cpf}"></span></p>
+                <!--TC = sigla do controler#nomeDoMetodo
+                <a th:href="${(#mvc.url('TC#getDoctorDetails').arg(0, doctor.id)).build()}" class="text-right btn btn-primary ">Mais detalhes</a>-->
+            </div>
+        </div>
+    </div>
+
+</section>
+
+</body>
+
+
+</html>

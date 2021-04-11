@@ -6,12 +6,4 @@ import com.example.gestaohospitalar.models.Patient;
 
 public interface PatientRepository extends JpaRepository<Patient, Long> {
 
-    //Aqui temos metodos prontos, ocultos
-/*
-findAll
-findById
-delete
-*/
-
-
 }

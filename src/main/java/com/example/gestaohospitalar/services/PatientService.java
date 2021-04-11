@@ -11,4 +11,6 @@ public interface PatientService {
 	Patient findById(long id);
 
 	Patient save(Patient post);
+
+	void deleteById(Long id);
 }
