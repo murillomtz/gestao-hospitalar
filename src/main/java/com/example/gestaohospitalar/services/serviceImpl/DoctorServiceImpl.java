@@ -32,4 +32,12 @@ public class DoctorServiceImpl implements DoctorService {
         return doctorRepository.save(doctor);
 
     }
+
+    @Override
+    public void delete(DoctorModel doctor) {
+        DoctorModel toRemove = doctorRepository.findById(doctor.getId()).get();
+
+        doctorRepository.delete(toRemove);
+
+    }
 }

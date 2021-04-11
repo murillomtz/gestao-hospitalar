@@ -1,50 +1,81 @@
 <!DOCTYPE html>
 <!--Referenciando o Thymeleaf-->
 <html xmlns:th="http://thymeleaf.org">
+  <div th:replace="include/head :: head"></div>
+  <div th:replace="include/reader :: header"></div>
 
-<div th:replace="include/head :: head"></div>
-<div th:replace="include/reader :: header"></div>
+  <body>
+    <section>
+      <!--Listagem de poster-->
+      <div class="container" style="width: 60%; padding: 30px">
+      
 
-<body>
-<section>
-    <!--Listagem de poster-->
-    <div class="container" style="width: 60%; padding-bottom: 30px;">
-        <!--breadcrumb - Voltar para home-->
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb" style="background-color: white;padding-left: 0px;">
-                <li class="breadcrumb-item active" aria-current="page">Historicos de consultas</li>
-            </ol>
-        </nav>
-        <!--Cards dos posters-->
-        <div class="card text-white bg-dark mb-3" style="margin-top: 20px;" th:each="post :${posts}">
-            <div class="card-header">Post#<span th:text="${post.id}"></span></div>
-            <div class="card-body">
-                <p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem;">
-                    <!--DEVE LISTAR OS HISTORICOS-->
-                    <span th:text="${post.autor}"></span>,
-                    <span th:text="${post.data}"></span>
-                </p>
-                <!--CC = sigla do controler#nomeDoMetodo-->
-                <a th:href="${(#mvc.url('CC#getPostDetails').arg(0, post.id)).build()}">
-                    <h5 class="card-title" style="font-weight: bold; padding-top: 5px; ">
-                        <span th:text="${post.titulo}"></span>
-                    </h5>
-                </a>
+        <section>
+          <h2>Consultas</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Tipo</th>
+                <th scope="col">Duração</th>
+                <th scope="col">Ocasião</th>
+                <th scope="col">Custo</th>
+                <th scope="col">Diagnóstico</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="appointment :${appointments}">
+                <td th:text="${appointment.typeAppointment}"></td>
+                <td th:text="${appointment.duration}"></td>
+                <td th:text="${appointment.occasion}"></td>
+                <td th:text="${appointment.cost}"></td>
+                <td th:text="${appointment.diagnosis}"></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section>
+          <h2>Médicos</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">RMS</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Especialidade</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="doctor :${doctors}">
+                <td th:text="${doctor.name}"></td>
+                <td th:text="${doctor.RMS}"></td>
+                <td th:text="${doctor.cpf}"></td>
+                <td th:text="${doctor.especialidade}"></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
 
-                <p class="card-text">
-                    <span th:utext="${#strings.abbreviate(post.texto,400)}"></span>
-                </p>
-            </div>
-        </div>
-
-    </div>
-
-
-</section>
-
-
-
-</body>
-
-
+          <section>
+            <h2>Pacientes</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Nome</th>
+                  <th scope="col">RMS</th>
+                  <th scope="col">CPF</th>
+                  <th scope="col">Especialidade</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="patient :${patients}">
+                  <td th:text="${patient.name}"></td>
+                  <td th:text="${patient.name}"></td>
+                  <td th:text="${patient.cpf}"></td>
+                  <td th:text="${patient.especialidade}"></td>
+                </tr>
+              </tbody>
+            </table>
+        </section>
+    </section>
+  </body>
 </html>

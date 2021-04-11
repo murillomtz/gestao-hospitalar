@@ -1,6 +1,5 @@
 package com.example.gestaohospitalar.models;
 
-
 import com.example.gestaohospitalar.enums.RoleEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -13,13 +12,11 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
-
 @Entity
 @Table(name = "tb_doctor")
 @JsonTypeName("doctorModel")
 public class DoctorModel extends Employee implements Serializable {
     private static final long serialVersionUID = -7999235303120098773L;
-
 
     private String especialidade;
     private Integer RMS;
@@ -33,9 +30,8 @@ public class DoctorModel extends Employee implements Serializable {
 
     }
 
-    public DoctorModel(String name, String cpf, LocalDate birthDate,
-                       Long id, RoleEnum role, Unit unit, Double valueHour,
-                       String especialidade, Integer RMS, List<Appointmet> appointments) {
+    public DoctorModel(String name, String cpf, LocalDate birthDate, Long id, RoleEnum role, Unit unit,
+            Double valueHour, String especialidade, Integer RMS, List<Appointmet> appointments) {
 
         super(name, cpf, birthDate, id, role, unit, valueHour);
         this.especialidade = especialidade;
@@ -61,11 +57,15 @@ public class DoctorModel extends Employee implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        if (!super.equals(o))
+            return false;
         DoctorModel that = (DoctorModel) o;
-        return Objects.equals(especialidade, that.especialidade) && Objects.equals(RMS, that.RMS) && Objects.equals(appointments, that.appointments);
+        return Objects.equals(especialidade, that.especialidade) && Objects.equals(RMS, that.RMS)
+                && Objects.equals(appointments, that.appointments);
     }
 
     @Override

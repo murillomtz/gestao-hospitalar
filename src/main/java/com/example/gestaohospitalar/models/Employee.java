@@ -3,21 +3,16 @@ package com.example.gestaohospitalar.models;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import org.hibernate.annotations.GenericGenerator;
 
 import com.example.gestaohospitalar.enums.RoleEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
 @Table(name = "tb_employee")
