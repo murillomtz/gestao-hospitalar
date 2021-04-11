@@ -27,8 +27,8 @@ public class AppointmetServiceImpl implements AppointmetService {
   }
 
   @Override
-  public Appointmet save(Appointmet doctor) {
-    return appointmentRepository.save(doctor);
+  public Appointmet save(Appointmet appointmet) {
+    return appointmentRepository.save(appointmet);
   }
 
 }
