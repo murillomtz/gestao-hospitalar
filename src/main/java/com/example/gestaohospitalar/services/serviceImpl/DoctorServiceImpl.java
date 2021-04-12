@@ -37,10 +37,8 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
-    public void delete(DoctorModel doctor) {
-        DoctorModel toRemove = doctorRepository.findById(doctor.getId()).get();
-
-        doctorRepository.delete(toRemove);
-
+    public void deleteById(Long id) {
+        doctorRepository.deleteById(id);
+        return;
     }
 }

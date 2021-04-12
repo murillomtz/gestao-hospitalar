@@ -36,4 +36,10 @@ public class AppointmetServiceImpl implements AppointmetService {
     return appointmentRepository.save(appointmentToSave);
   }
 
+  @Override
+    public void deleteById(Long id) {
+        appointmentRepository.deleteById(id);
+        return;
+    }
+
 }

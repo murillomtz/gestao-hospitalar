@@ -25,12 +25,9 @@ public class DoctorController {
     private DoctorService doctorService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ModelAndView getTarefaDetails(@PathVariable("id") long id) {
-
-        ModelAndView mv = new ModelAndView("doctorDetails");
-        DoctorModel doctor = doctorService.findById(id);
-        mv.addObject("doctor", doctor);
-        return mv;
+    public String getDoctorDetails(@PathVariable("id") long id) {
+        doctorService.deleteById(id);
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/new")

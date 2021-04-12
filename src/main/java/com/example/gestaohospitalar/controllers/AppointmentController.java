@@ -27,12 +27,9 @@ public class AppointmentController {
     private AppointmetService appointmentService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ModelAndView getAppointmentDetails(@PathVariable("id") long id) {
-
-        ModelAndView mv = new ModelAndView("appointmentDetails");
-        Appointmet appointment = appointmentService.findById(id);
-        mv.addObject("appointment", appointment);
-        return mv;
+    public String getAppointmentDetails(@PathVariable("id") long id) {
+        appointmentService.deleteById(id);
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/new")

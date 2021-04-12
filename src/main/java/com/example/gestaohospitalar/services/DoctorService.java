@@ -12,5 +12,5 @@ public interface DoctorService {
 
 	DoctorModel save(DoctorModel doctor);
 
-	void delete(DoctorModel doctor);
+	void deleteById(Long id);
 }

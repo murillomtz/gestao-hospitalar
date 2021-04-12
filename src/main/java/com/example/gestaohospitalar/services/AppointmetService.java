@@ -11,4 +11,6 @@ public interface AppointmetService {
   Appointmet findById(long id);
 
   Appointmet save(Appointmet doctor);
+
+  void deleteById(Long id);
 }
