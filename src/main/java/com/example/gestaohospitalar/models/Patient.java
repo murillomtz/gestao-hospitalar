@@ -2,6 +2,7 @@ package com.example.gestaohospitalar.models;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -35,7 +36,7 @@ public class Patient extends PersonModel implements Serializable {
 		
 	};
 
-	public Patient(String name, String cpf, LocalDate birthDate, List<Appointmet> appointments, String cep,
+	public Patient(String name, String cpf, Date birthDate, List<Appointmet> appointments, String cep,
 			List<Medication> medications) {
 		super(name, cpf, birthDate);
 		this.appointments = appointments;

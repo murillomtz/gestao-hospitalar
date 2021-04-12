@@ -2,6 +2,7 @@ package com.example.gestaohospitalar.models;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -32,10 +34,10 @@ public class PersonModel implements Serializable {
 	private String name;
 	private String cpf;
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-	private LocalDate birthDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date birthDate;
 
-	public PersonModel(String name, String cpf, LocalDate birthDate) {
+	public PersonModel(String name, String cpf, Date birthDate) {
 		super();
 		this.name = name;
 		this.cpf = cpf;
@@ -65,11 +67,11 @@ public class PersonModel implements Serializable {
 		this.cpf = cpf;
 	}
 
-	public LocalDate getBirthDate() {
+	public Date getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(LocalDate birthDate) {
+	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 

@@ -6,75 +6,39 @@
 <div th:replace="include/reader :: header"></div>
 
 <body>
-<section>
-    <!--Listagem de poster-->
-    <div class="container" style="width: 60%; padding-bottom: 30px;">
-        <!--breadcrumb - Voltar para home-->
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb" style="background-color: white;padding-left: 0px;">
-                <li class="breadcrumb-item" aria-current="page"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Nova Consulta</li>
-            </ol>
-        </nav>
-        <div>
-            <th:block th:include="mensagemValidacao"></th:block>
-            <form method="post">
-                <div class="form-group">
-                    <!-- USAR MENU DE OPCAO DOS TIPOS DA CONSULTA-->
-                    <input type="text" class="form-control" name="tipo" placeholder="Tipo da consulta *">
+    <section>
+        <!--Listagem de poster-->
+        <div class="container" style="width: 60%; padding-bottom: 30px;">
+            <h2>Criar Consulta</h2>
+            <!-- TypeAppointmentEnum typeAppointment, Double duration, String occasion, Double cost,
+                      String diagnosis, DoctorModel doctor, Patient patient, Set<String> inputs, List<Medication> medications,
+                      LocalDate date, Unit unit -->
+            <form method="POST" th:object="${appointment}" th:action="@{/appointment}">
+                <!-- <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Nome" th:field="*{name}" />
                 </div>
                 <div class="form-group">
-                    <input type="number" class="form-control" name="duracao" placeholder="Duração da consulta *">
+                    <input class="form-control" type="text" placeholder="CPF" th:field="*{cpf}" />
                 </div>
-
-                <textarea id="summernoteOcorrencia" type="text"  style="padding-left: 10px; " class="form-control" name="ocorrencia"
-                          placeholder="Relato da ocorrência *"></textarea>
-
                 <div class="form-group">
-                    <input type="number" class="form-control" name="custo" placeholder="Custo da consulta *">
-                </div>
-
-                <textarea id="summernoteDiagnostico" type="text" class="form-control" name="diagnostico"
-                          placeholder="Relato do diagnostico *"></textarea>
-
-                <div class="form-group">
-                    <!-- USAR MENU DE OPCAO DOS TIPOS DA CONSULTA-->
-                    <input type="text" class="form-control" name="medico" placeholder="Medico responsavel *">
-                </div>
-
-                <div class="form-group">
-                    <!-- USAR MENU DE OPCAO DOS TIPOS DA CONSULTA-->
-                    <input type="text" class="form-control" name="insumos" placeholder="Insumos usados *">
-                </div>
-
-                <div class="form-group">
-                    <!-- USAR MENU DE OPCAO DOS TIPOS DA CONSULTA-->
-                    <input type="text" class="form-control" name="medicamento" placeholder="Medicamentos usados *">
-                </div>
-
-                <div class="form-group">
-                    <!-- USAR MENU DE OPCAO DOS TIPOS DA CONSULTA-->
-                    <input type="text" class="form-control" name="unidade" placeholder="Unidade *">
-                </div>
-
-                <small class="form-text text-muted">(*) Campos obrigatórios</small>
-
-                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Publicar</button>
-                <a href="/" class="btn btn-light" role="button" style="margin-top: 10px;">Cancelar</a>
-                <!--<button type="submit" class="btn" style="margin-top: 10px;">Cancelar</button>-->
+                    <input class="form-control" type="date" placeholder="Data de Nascimento" th:field="*{birthDate}" />
+                </div> -->
+                <!-- <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Diagnostico" th:field="*{diagnosis}" />
+                </div> -->
+                <button type="submit" class="btn btn-primary">Criar Consulta</button>
             </form>
         </div>
-    </div>
-</section>
+    </section>
 
-<script>
+    <script>
 
-    $('#summernote').summernote({
-        placeholde: 'Texto *',
-        tabsize: 2,
-        height: 300
-    });
-</script>
+        $('#summernote').summernote({
+            placeholde: 'Texto *',
+            tabsize: 2,
+            height: 300
+        });
+    </script>
 </body>
 
 

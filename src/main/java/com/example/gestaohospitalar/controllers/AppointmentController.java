@@ -11,20 +11,23 @@ import com.example.gestaohospitalar.services.AppointmetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
+@RequestMapping("/appointment")
 public class AppointmentController {
 
     @Autowired
     private AppointmetService appointmentService;
 
 
-    @RequestMapping(value = "/consulta", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView getAppointment(){
         ModelAndView mv = new ModelAndView("patientList");
         List<Appointmet> appointments = appointmentService.findAll();
@@ -33,7 +36,7 @@ public class AppointmentController {
     }
 
 
-    @RequestMapping(value = "/consulta/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ModelAndView getAppointmentDetails(@PathVariable("id") long id) {
 
         ModelAndView mv = new ModelAndView("appointmentDetails");
@@ -42,25 +45,21 @@ public class AppointmentController {
         return mv;
     }
     
-    @RequestMapping(value = "/consulta/new")
-    public ModelAndView createAppointment() {
+    @RequestMapping(value = "/new")
+    public ModelAndView createAppointment(@ModelAttribute Appointmet appointment) {
 
-        ModelAndView mv = new ModelAndView("consultaForm");
+        ModelAndView mv = new ModelAndView("usuarioForm");
+        mv.addObject("appointment", appointment);
 
         return mv;
     }
 
     @Transactional // Por conta da transição de usuario e tarefa
-    @RequestMapping(value = "/consulta", method = RequestMethod.POST)
-    public String saveAppointment(@Valid Appointmet appointment, BindingResult result, RedirectAttributes attributes) {
-        if (result.hasErrors()) {
-            attributes.addFlashAttribute("mensagem", "Verifique se os campos obrigatorios foram preechidos!");
-            return "redirect:/consulta";
-        }
-        System.out.println(appointment);
-        appointmentService.save(appointment);
-        
-        return "redirect:/consulta";
+    @PostMapping
+    public String addAppointment(@Valid Appointmet appointment, BindingResult result, RedirectAttributes attributes) {
 
+        appointmentService.save(appointment);
+
+        return "redirect:/";
     }
 }

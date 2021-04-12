@@ -29,7 +29,12 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public Patient save(Patient patient) {
-        return patientRepository.save(patient);
+
+        Patient patientToSave = new Patient(patient.getName(), patient.getCpf(), patient.getBirthDate(),
+         null, patient.getCep(),
+        null);
+
+        return patientRepository.save(patientToSave);
 
     }
 

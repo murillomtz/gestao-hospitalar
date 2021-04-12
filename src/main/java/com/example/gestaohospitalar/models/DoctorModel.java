@@ -8,6 +8,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,7 +29,7 @@ public class DoctorModel extends PersonModel implements Serializable {
     public DoctorModel() {
     }
 
-    public DoctorModel(String name, String cpf, LocalDate birthDate, String especialidade, Integer RMS,
+    public DoctorModel(String name, String cpf, Date birthDate, String especialidade, Integer RMS,
             List<Appointmet> appointments) {
         super(name, cpf, birthDate);
         this.especialidade = especialidade;
