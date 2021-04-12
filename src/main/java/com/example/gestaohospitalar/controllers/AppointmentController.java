@@ -26,16 +26,6 @@ public class AppointmentController {
     @Autowired
     private AppointmetService appointmentService;
 
-
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView getAppointment(){
-        ModelAndView mv = new ModelAndView("patientList");
-        List<Appointmet> appointments = appointmentService.findAll();
-        mv.addObject("patientes", appointments);
-        return mv;
-    }
-
-
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ModelAndView getAppointmentDetails(@PathVariable("id") long id) {
 
@@ -44,11 +34,11 @@ public class AppointmentController {
         mv.addObject("appointment", appointment);
         return mv;
     }
-    
+
     @RequestMapping(value = "/new")
     public ModelAndView createAppointment(@ModelAttribute Appointmet appointment) {
 
-        ModelAndView mv = new ModelAndView("usuarioForm");
+        ModelAndView mv = new ModelAndView("consultaForm");
         mv.addObject("appointment", appointment);
 
         return mv;

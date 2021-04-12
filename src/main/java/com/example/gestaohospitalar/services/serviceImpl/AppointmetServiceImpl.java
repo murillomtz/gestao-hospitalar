@@ -3,6 +3,7 @@ package com.example.gestaohospitalar.services.serviceImpl;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.gestaohospitalar.enums.TypeAppointmentEnum;
 import com.example.gestaohospitalar.models.Appointmet;
 import com.example.gestaohospitalar.repository.AppointmetRepository;
 import com.example.gestaohospitalar.services.AppointmetService;
@@ -28,7 +29,11 @@ public class AppointmetServiceImpl implements AppointmetService {
 
   @Override
   public Appointmet save(Appointmet appointmet) {
-    return appointmentRepository.save(appointmet);
+
+    Appointmet appointmentToSave = new Appointmet(appointmet.getTypeAppointment(), appointmet.getDuration(),
+        appointmet.getOccasion(), appointmet.getCost(), appointmet.getDiagnosis(), null, null, null, null, null, null);
+
+    return appointmentRepository.save(appointmentToSave);
   }
 
 }

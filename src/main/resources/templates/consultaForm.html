@@ -1,45 +1,84 @@
 <!DOCTYPE html>
 <!--Referenciando o Thymeleaf-->
 <html xmlns:th="http://thymeleaf.org">
+  <div th:replace="include/head :: head"></div>
+  <div th:replace="include/reader :: header"></div>
 
-<div th:replace="include/head :: head"></div>
-<div th:replace="include/reader :: header"></div>
-
-<body>
+  <body>
     <section>
-        <!--Listagem de poster-->
-        <div class="container" style="width: 60%; padding-bottom: 30px;">
-            <h2>Criar Consulta</h2>
-            <!-- TypeAppointmentEnum typeAppointment, Double duration, String occasion, Double cost,
-                      String diagnosis, DoctorModel doctor, Patient patient, Set<String> inputs, List<Medication> medications,
-                      LocalDate date, Unit unit -->
-            <form method="POST" th:object="${appointment}" th:action="@{/appointment}">
-                <!-- <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Nome" th:field="*{name}" />
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" placeholder="CPF" th:field="*{cpf}" />
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="date" placeholder="Data de Nascimento" th:field="*{birthDate}" />
-                </div> -->
-                <!-- <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Diagnostico" th:field="*{diagnosis}" />
-                </div> -->
-                <button type="submit" class="btn btn-primary">Criar Consulta</button>
-            </form>
-        </div>
+      <!--Listagem de poster-->
+      <div class="container" style="width: 60%; padding-bottom: 30px">
+        <h2>Criar Consulta</h2>
+
+        <form
+          method="POST"
+          th:object="${appointment}"
+          th:action="@{/appointment}"
+        >
+          <div class="form-group">
+            <input
+              class="form-control"
+              type="number"
+              id="cost"
+              name="cost"
+              placeholder="Custo"
+            />
+          </div>
+
+          <div class="form-group">
+            <input
+              class="form-control"
+              type="number"
+              id="duration"
+              name="duration"
+              placeholder="Duração"
+            />
+          </div>
+
+          <div class="form-group">
+            <input
+              class="form-control"
+              type="text"
+              id="occasion"
+              name="occasion"
+              placeholder="Ocasião"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              class="form-control"
+              type="text"
+              id="diagnosis"
+              name="diagnosis"
+              placeholder="Diagnóstico"
+            />
+          </div>
+          <div class="form-group">
+            <select class="form-control" name="typeAppointment">
+              <option class="dropdown-item" name="TRIAGEM" href="#">
+                TRIAGEM
+              </option>
+              <option class="dropdown-item" name="CIRURGIA" href="#">
+                CIRURGIA
+              </option>
+              <option class="dropdown-item" name="EXAME" href="#">EXAME</option>
+              <option class="dropdown-item" name="OBSERVACAO" href="#">
+                OBSERVACAO
+              </option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Criar Consulta</button>
+        </form>
+      </div>
     </section>
 
     <script>
-
-        $('#summernote').summernote({
-            placeholde: 'Texto *',
-            tabsize: 2,
-            height: 300
-        });
+      $("#summernote").summernote({
+        placeholde: "Texto *",
+        tabsize: 2,
+        height: 300,
+      });
     </script>
-</body>
-
-
+  </body>
 </html>
